@@ -1,0 +1,25 @@
+<!-- -->
+<launch>
+  <!-- Ego vehicle -->
+  <arg name='role_name' default='ego_vehicle'/>
+  <arg name="spawn_point" default='150,-193.2,3,0,0,180'/><!-- use comma separated format "x,y,z,roll,pitch,yaw" -->
+
+  <arg name='control_method' default='MPC'/><!-- "PurePursuit", "Stanley", "MPC" -->
+
+  <include file="$(find carla_ros_bridge)/launch/carla_ros_bridge_with_example_ego_vehicle.launch">
+    <arg name='spawn_point' value='$(arg spawn_point)'/>
+  </include>
+
+  <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher.launch" />
+
+  <include file="$(find replay_path_planner)/launch/replay_path_planner.launch">
+    <arg name='role_name' value='$(arg role_name)'/>
+  </include>
+
+  <include file="$(find trajectory_controller)/launch/trajectory_controller.launch">
+    <arg name='role_name' value='$(arg role_name)'/>
+    <arg name='control_method' value='$(arg control_method)'/>
+  </include>
+
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find trajectory_controller)/rviz/control.rviz"/>
+</launch>
