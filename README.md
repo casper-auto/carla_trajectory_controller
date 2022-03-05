@@ -2,7 +2,25 @@
 
 ## Methods
 
-## Run
+### PID
+
+### Pure Pursuit
+
+### Stanley
+
+### MPC
+
+## Quick Setup
+
+```
+./setup_workspace.sh
+```
+
+## Run Demo
+
+```
+roslaunch trajectory_controller trajectory_control_demo.launch
+```
 
 ## Clang Format
 
@@ -16,4 +34,4 @@ Available style options are described in [Clang-Format Style Options](https://cl
 
 ## Reference
 
-- [Coursera: Self-Driving Car Specialization]()
+- [Coursera: Self-Driving Cars Specialization](https://www.coursera.org/learn/motion-planning-self-driving-cars?specialization=self-driving-cars)
